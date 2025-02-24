@@ -5,17 +5,17 @@ const multer = require("multer");
 const path = require("path");
 const axios = require("axios");
 const FormData = require("form-data"); // Required for sending images to Python API
+const dotenv = require("dotenv");
 
 const app = express();
 const port = process.env.PORT || 5000;
-
+dotenv.config();
 app.use(cors());
 app.use(express.json());
 
 // ✅ MongoDB Connection
-const mongoURI = "mongodb://localhost:27017/zomato_db"; // Your database
 mongoose
-  .connect(mongoURI)
+  .connect(process.env.MONGO_URI)
   .then(() => console.log("✅ Connected to MongoDB"))
   .catch((err) => console.error("❌ MongoDB Connection Error:", err));
 

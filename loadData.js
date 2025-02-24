@@ -4,7 +4,7 @@ const dotenv = require("dotenv");
 const Restaurant = require("./models/Restaurant");
 
 dotenv.config();
-
+// MONGO_URI="mongodb://localhost:27017/zomato_db"
 // ✅ MongoDB Connection
 mongoose
   .connect(process.env.MONGO_URI)
