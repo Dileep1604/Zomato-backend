@@ -17,7 +17,7 @@ mongoose
 // ✅ Import Data Function
 const importData = async () => {
   try {
-    const data = JSON.parse(fs.readFileSync("file5.json", "utf-8"));
+    const data = JSON.parse(fs.readFileSync("file1.json", "utf-8"));
 
     if (!Array.isArray(data) || data.length === 0) {
       throw new Error("❌ Invalid JSON structure: Expected an array at the root.");
