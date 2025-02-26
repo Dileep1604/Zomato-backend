@@ -18,22 +18,9 @@ app.use(express.json());
 // const mongoURI = "mongodb://localhost:27017/zomato_db"; // Your database
 const mongoURI=process.env.MONGO_URI
 mongoose
-  .connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    serverSelectionTimeoutMS: 5000, // Reduce timeout if server fails to connect
-    socketTimeoutMS: 45000, // Longer socket timeout for slow connections
-    bufferCommands: false, // Prevent buffering issues
-  })
+  .connect(mongoURI)
   .then(() => console.log("✅ Connected to MongoDB"))
-  .catch((err) => {
-    console.error("❌ MongoDB Connection Error:", err);
-    process.exit(1); // Exit process on connection failure
-  });
-
-mongoose.connection.on("error", (err) => {
-  console.error("❌ MongoDB Error:", err);
-});
+  .catch((err) => console.error("❌ MongoDB Connection Error:", err));
 
 // ✅ Define Restaurant Schema
 const RestaurantSchema = new mongoose.Schema({
